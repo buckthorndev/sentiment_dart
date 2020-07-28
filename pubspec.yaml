@@ -1,7 +1,7 @@
 name: sentiment_dart
 description: Sentiment Dart is a dart module that uses the AFINN-165 wordlist to perform sentiment analysis on arbitrary blocks of text
-version: 0.0.2
-homepage: https://github.com/BuckthornInc/sentiment_dart
+version: 0.0.3
+homepage: https://github.com/buckthorndev/sentiment_dart
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

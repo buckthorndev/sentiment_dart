@@ -103,10 +103,10 @@ Happy 😍 to recieve or provide contributions related to this package.
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: https://github.com/BuckthornInc/sentiment_dart/issues
+[tracker]: https://github.com/buckthorndev/sentiment_dart/issues
 
 ## Contact 📧
 
 if you have any questions , feel free to wite us on
 
-- [Twitter](https://twitter.com/buckthorninc)
+- [Twitter](https://twitter.com/buckthorndev)
