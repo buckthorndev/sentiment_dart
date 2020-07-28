@@ -1,6 +1,6 @@
 <h1 align="center"> Sentiment Dart </h1>
 
-Sentiment Dart is a dart module that uses the [AFINN-165 wordlist](http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010) and Emoji Sentiment Ranking to perform sentiment analysis on arbitrary blocks of input text. Sentiment Dart heavily inspired by the Javascript package [sentiment](https://www.npmjs.com/package/sentiment)
+Sentiment Dart is a dart module that uses the [AFINN-165 wordlist](https://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010) and Emoji Sentiment Ranking to perform sentiment analysis on arbitrary blocks of input text. Sentiment Dart heavily inspired by the Javascript package [sentiment](https://www.npmjs.com/package/sentiment)
 
 ## Usage
 
