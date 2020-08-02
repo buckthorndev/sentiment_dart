@@ -4,9 +4,22 @@ import 'package:sentiment_dart/src/lang/english/english.dart';
 import 'package:sentiment_dart/src/lang/french/french.dart';
 import 'package:sentiment_dart/src/lang/italian/italian.dart';
 
+import 'lang/german/german.dart';
+
 /// Sentiment class
 class Sentiment {
-  /// Analysis
+  /// Analysis function
+  ///
+  /// syntax `analysis(String text,{Map customLang, bool emoji = false, String languageCode})`
+  ///
+  /// return `Map<String, dynamic>`
+  ///
+  /// example:
+  /// ```dart
+  ///  final sentiment = Sentiment();
+  ///  print(sentiment.analysis('i hate you piece of shit 💩'));
+  /// // {score: -7, comparative: -1.1666666666666667, words: [i, hate, you, piece, of, shit], good words: [], badword: [[hate, -3], [shit, -4]]}
+  ///```
   Map<String, dynamic> analysis(String text,
       {Map customLang, bool emoji = false, String languageCode}) {
     try {
@@ -16,14 +29,25 @@ class Sentiment {
       if (emoji) sentiments.addAll(emojis);
       if (customLang == null) {
         switch (languageCode) {
+
+          /// english
           case 'en':
             sentiments.addAll(en);
             break;
+
+          /// italian
           case 'it':
             sentiments.addAll(it);
             break;
+
+          /// french
           case 'fr':
             sentiments.addAll(fr);
+            break;
+
+          /// german
+          case 'de':
+            sentiments.addAll(de);
             break;
           default:
             throw ('err');
