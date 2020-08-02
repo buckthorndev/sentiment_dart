@@ -87,6 +87,7 @@ AFINN is a list of words rated for valence with an integer between minus five (n
 | English  | en   |
 | Italian  | it   |
 | french   | fr   |
+| german   | de   |
 
 *As soon as possible, more languages will be available.*
 
