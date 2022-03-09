@@ -1,4 +1,4 @@
-var emojis = {
+const emojis = {
   '😂': 1,
   '❤': 4,
   '♥': 3,

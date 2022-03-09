@@ -1,4 +1,4 @@
-var it = {
+const it = {
   'abbandono': -2,
   'abbandonato': -2,
   'abbandona': -2,

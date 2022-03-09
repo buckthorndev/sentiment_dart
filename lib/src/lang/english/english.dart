@@ -1,4 +1,4 @@
-var en = {
+const en = {
   'abandon': -2,
   'abandoned': -2,
   'abandons': -2,
