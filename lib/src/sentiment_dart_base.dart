@@ -2,12 +2,13 @@ import 'package:remove_emoji/remove_emoji.dart';
 import 'package:sentiment_dart/src/lang/emoji/emoji.dart';
 import 'package:sentiment_dart/src/lang/english/english.dart';
 import 'package:sentiment_dart/src/lang/french/french.dart';
+import 'package:sentiment_dart/src/lang/german/german.dart';
 import 'package:sentiment_dart/src/lang/italian/italian.dart';
-
-import 'lang/german/german.dart';
+import 'package:sentiment_dart/src/sentiment_result.dart';
 
 /// Sentiment class
-class Sentiment {
+abstract class Sentiment {
+  Sentiment._();
   /// Analysis function
   ///
   /// syntax `analysis(String text,{Map customLang, bool emoji = false, String languageCode})`
@@ -20,12 +21,15 @@ class Sentiment {
   ///  print(sentiment.analysis('i hate you piece of shit 💩'));
   /// // {score: -7, comparative: -1.1666666666666667, words: [i, hate, you, piece, of, shit], good words: [], badword: [[hate, -3], [shit, -4]]}
   ///```
-  Map<String, dynamic> analysis(String text,
-      {Map customLang, bool emoji = false, String languageCode}) {
+  static SentimentResult analysis(
+    String text, {
+    Map<String,num>? customLang,
+    bool emoji = false,
+     String languageCode = 'en',
+  }) {
     try {
-      if (text.isEmpty) throw ('err');
-      languageCode ??= 'en';
-      var sentiments = {};
+      if (text.isEmpty) throw ('The provided text mus not be empty.');
+      var sentiments = <String,num>{};
       if (emoji) sentiments.addAll(emojis);
       if (customLang == null) {
         switch (languageCode) {
@@ -55,8 +59,8 @@ class Sentiment {
       } else {
         sentiments.addAll(customLang);
       }
-      var score = 0;
-      var goodwords = [], badwords = [];
+      var score = 0.0;
+      var goodWords = <String,num>{}, badWords = <String,num>{};
       var wordlist = emoji
           ? text
               .toLowerCase()
@@ -78,23 +82,20 @@ class Sentiment {
           if (key == wordlist[i]) {
             score += value;
             if (value < 0) {
-              badwords.add([key, value]);
-            } else {
-              goodwords.add([key, value]);
+              badWords[key]=value;
+            } else{
+              goodWords[key]=value;
             }
           }
         });
       }
-      var result = {
-        'score': score,
-        'comparative': wordlist.isNotEmpty ? score / wordlist.length : 0,
-        'words': wordlist,
-        'good words': goodwords,
-        'badword': badwords
-      };
-      return result;
+      return SentimentResult(score: score, comparative: wordlist.isNotEmpty ? score / wordlist.length : 0, words: SentimentWordCategories(all: wordlist,good: goodWords, bad: badWords));
+
     } catch (e) {
       throw Exception(e);
     }
   }
+
+  /// maps Emoji Strings to a score
+  static const Map<String,num> emojiScores = emojis;
 }

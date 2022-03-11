@@ -1,4 +1,4 @@
-var de = {
+const de = {
   'verlassen': -1,
   'gibt auf': -2,
   'entführt': -2,

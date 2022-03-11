@@ -4,10 +4,10 @@ version: 0.0.4
 homepage: https://github.com/buckthorndev/sentiment_dart
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.15.0 <3.0.0'
 
 dependencies:
-  remove_emoji: ^0.0.2
+  remove_emoji: ^0.0.6
 
 dev_dependencies:
   pedantic: ^1.8.0
