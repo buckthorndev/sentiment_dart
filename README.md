@@ -9,14 +9,15 @@ import 'package:sentiment_dart/sentiment_dart.dart';
 
 main() {
   void main() {
-  final sentiment = Sentiment();
-  print(sentiment.analysis('i hate you piece of shit 💩'));
 
-  print(sentiment.analysis('i hate you piece of shit 💩',emoji: true));
+  print(Sentiment.analysis('i hate you piece of shit 💩'));
+
+  print(Sentiment.analysis('i hate you piece of shit 💩',emoji: true));
 }
 }
 ```
-*output*
+
+_output_
 
 ```output
 {score: -7, comparative: -1.1666666666666667, words: [i, hate, you, piece, of, shit], good words: [], badword: [[hate, -3], [shit, -4]]}
@@ -26,24 +27,24 @@ main() {
 
 ### Other language
 
-*example*
+_example_
 
 ```dart
 import 'package:sentiment_dart/sentiment_dart.dart';
 
 main() {
   void main() {
-  final sentiment = Sentiment();
 
-  print(sentiment.analysis('ti odio un pezzo di merda 💩',languageCode: 'it'));
 
-  print(sentiment.analysis('ti odio un pezzo di merda 💩',emoji: true,languageCode: 'it'));
+  print(Sentiment.analysis('ti odio un pezzo di merda 💩',languageCode: 'it'));
+
+  print(Sentiment.analysis('ti odio un pezzo di merda 💩',emoji: true,languageCode: 'it'));
 
 }
 }
 ```
 
-*output*
+_output_
 
 ```output
 {score: -7, comparative: -1.1666666666666667, words: [ti, odio, un, pezzo, di, merda], good words: [], badword: [[odio, -3], [merda, -4]]}
@@ -53,21 +54,22 @@ main() {
 
 ### Custom language
 
-*example*
+_example_
 
 ```dart
 import 'package:sentiment_dart/sentiment_dart.dart';
 
 main() {
   void main() {
-  final sentiment = Sentiment();
+
 
   var customLang = {'i': 1, 'love': 1, 'dart': 5,'car':2};
-  print(sentiment.analysis('i love dart',customLang: customLang));
+  print(Sentiment.analysis('i love dart',customLang: customLang));
 }
 }
 ```
-*output*
+
+_output_
 
 ```output
 {score: 7, comparative: 2.3333333333333335, words: [i, love, dart], good words: [[i, 1], [love, 1], [dart, 5]], badword: []}
@@ -83,24 +85,18 @@ AFINN is a list of words rated for valence with an integer between minus five (n
 ## Languages and code
 
 | language | code |
-| --       | --   |
+| -------- | ---- |
 | English  | en   |
 | Italian  | it   |
 | french   | fr   |
 | german   | de   |
 
-*As soon as possible, more languages will be available.*
-
-## todo
-
-- [ ] add more languages
-
-- [ ] fix small bugs
 
 ## Contribution 🤓
+
 Happy 😍 to recieve or provide contributions related to this package.
 
-## Features and bugs  🐛
+## Features and bugs 🐛
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
@@ -110,4 +106,5 @@ Please file feature requests and bugs at the [issue tracker][tracker].
 
 if you have any questions , feel free to wite us on
 
-- [Twitter](https://twitter.com/buckthorndev)
+- [Buckthorn Twitter](https://twitter.com/buckthorndev)
+- [n4ze3m Twitter](https://twitter.com/n4ze3m)
