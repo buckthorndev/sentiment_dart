@@ -9,6 +9,7 @@ import 'package:sentiment_dart/src/sentiment_result.dart';
 /// Sentiment class
 abstract class Sentiment {
   Sentiment._();
+
   /// Analysis function
   ///
   /// syntax `analysis(String text,{Map customLang, bool emoji = false, String languageCode})`
@@ -23,13 +24,13 @@ abstract class Sentiment {
   ///```
   static SentimentResult analysis(
     String text, {
-    Map<String,num>? customLang,
+    Map<String, num>? customLang,
     bool emoji = false,
-     String languageCode = 'en',
+    String languageCode = 'en',
   }) {
     try {
       if (text.isEmpty) throw ('The provided text mus not be empty.');
-      var sentiments = <String,num>{};
+      var sentiments = <String, num>{};
       if (emoji) sentiments.addAll(emojis);
       if (customLang == null) {
         switch (languageCode) {
@@ -54,13 +55,13 @@ abstract class Sentiment {
             sentiments.addAll(de);
             break;
           default:
-            throw ('err');
+            throw ('The provided language code is not supported.');
         }
       } else {
         sentiments.addAll(customLang);
       }
       var score = 0.0;
-      var goodWords = <String,num>{}, badWords = <String,num>{};
+      var goodWords = <String, num>{}, badWords = <String, num>{};
       var wordlist = emoji
           ? text
               .toLowerCase()
@@ -82,20 +83,23 @@ abstract class Sentiment {
           if (key == wordlist[i]) {
             score += value;
             if (value < 0) {
-              badWords[key]=value;
-            } else{
-              goodWords[key]=value;
+              badWords[key] = value;
+            } else {
+              goodWords[key] = value;
             }
           }
         });
       }
-      return SentimentResult(score: score, comparative: wordlist.isNotEmpty ? score / wordlist.length : 0, words: SentimentWordCategories(all: wordlist,good: goodWords, bad: badWords));
-
+      return SentimentResult(
+          score: score,
+          comparative: wordlist.isNotEmpty ? score / wordlist.length : 0,
+          words: SentimentWordCategories(
+              all: wordlist, good: goodWords, bad: badWords));
     } catch (e) {
       throw Exception(e);
     }
   }
 
   /// maps Emoji Strings to a score
-  static const Map<String,num> emojiScores = emojis;
+  static const Map<String, num> emojiScores = emojis;
 }
